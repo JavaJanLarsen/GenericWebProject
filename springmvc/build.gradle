@@ -1,0 +1,10 @@
+apply plugin: 'war'
+dependencies {
+    compile project(':common')
+}
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'GenericWebProject-springmvc',
+                   'Implementation-Version': version
+    }
+}

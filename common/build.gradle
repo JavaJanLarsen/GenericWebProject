@@ -1,0 +1,6 @@
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'GenericWebProject-common',
+                   'Implementation-Version': version
+    }
+}
