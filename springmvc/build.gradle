@@ -1,6 +1,7 @@
 apply plugin: 'war'
 dependencies {
     compile project(':common')
+    compile 'org.apache.tomcat:tomcat-catalina:8.0.28'
 }
 jar {
     manifest {
