@@ -17,7 +17,7 @@ public class TestClass {
 		log.info("info");
 		log.warn("warn");
 		log.error("error");
-		return "Hello";
+		return "Hello, hello";
 	}
 
 }
