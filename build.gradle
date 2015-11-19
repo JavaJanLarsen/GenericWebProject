@@ -1,13 +1,13 @@
 subprojects {
     apply plugin: 'java'
-
+	apply plugin: 'eclipse-wtp'
+	
 	task wrapper(type: Wrapper) {
 		gradleVersion = '2.6'
 	}
 
     group = 'dk.javacon'
 	version = '0.1-SNAPSHOT'
-
 	sourceCompatibility = 1.8
 
 	repositories {

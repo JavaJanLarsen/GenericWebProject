@@ -3,6 +3,7 @@ apply from: 'gretty.plugin'
 
 dependencies {
     compile project(':common')
+    compile 'org.springframework:spring-webmvc:4.2.3.RELEASE'
     providedCompile 'org.apache.tomcat:tomcat-catalina:8.0.28'
 }
 
@@ -13,6 +14,23 @@ war {
     }
     
 }
+
+eclipse {
+
+	//if you want parts of paths in resulting file(s) to be replaced by variables (files):
+	//pathVariables 'GRADLE_HOME': file('/best/software/gradle'), 'TOMCAT_HOME': file('../tomcat')
+
+	wtp {
+		component {
+			contextPath = name
+		}
+
+		facet {
+  			facet name: 'jst.web', version: '3.0'
+		}
+	}
+}
+
 
 gretty {	
 	contextPath = '/springmvc'

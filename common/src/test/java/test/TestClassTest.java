@@ -8,7 +8,7 @@ public class TestClassTest {
 
 	@Test
 	public void testLogStuff() {
-		assertEquals("Hello", new TestClass().logStuff());
+		assertTrue(new TestClass().logStuff().startsWith("Hello"));
 	}
 
 }
