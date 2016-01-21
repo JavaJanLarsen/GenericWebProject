@@ -17,6 +17,14 @@
 	    <property name="suffix" value=".jsp"/>
 	</bean>
 	
-	<bean id="themeSource"
+	<bean id="themeSource" class="org.springframework.ui.context.support.ResourceBundleThemeSource">
+		<property name="basenamePrefix" value="theme-" /> 
+	</bean>
+	
+	<bean id="themeResolver"
+		class="org.springframework.web.servlet.theme.CookieThemeResolver">
+    <property name="defaultThemeName" value="default" />
+</bean>
+	
 	
 </beans>

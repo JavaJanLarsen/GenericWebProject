@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class EnvironmentPageController {
-	@RequestMapping("/environment")
+	@RequestMapping("/environment.html")
 	public String environment(Model model) {
 		EnvironmentFacade env = new EnvironmentFacade();
 		for (Entry<Object, Object> entry : env.getProperties().entrySet()) {
