@@ -19,5 +19,13 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<h1>Dependencies</h1>
+	<table>
+		<c:forEach var="dependency" items="${dependencies}">
+			<tr>
+				<td><c:out value="${dependency}" /></td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>

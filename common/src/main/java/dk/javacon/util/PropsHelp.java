@@ -2,6 +2,10 @@ package dk.javacon.util;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Properties;
 
@@ -40,12 +44,12 @@ public class PropsHelp {
 		if (properties == null) {
 			properties = new Properties();
 			try {
-				InputStream is = PropsHelp.class.getResourceAsStream(DEFAULT_FILE_NAME);
+				InputStream is = ResourceLoader.findResource(DEFAULT_FILE_NAME);
 				if (is != null) {
 					properties.load(is);
 					is.close();
 				}
-				is = PropsHelp.class.getResourceAsStream(ENV_FILE_NAME);				
+				is = ResourceLoader.findResource(ENV_FILE_NAME);				
 				if (is != null) {
 					properties.load(is);
 					is.close();
@@ -53,10 +57,25 @@ public class PropsHelp {
 			} catch (IOException e) {
 				log.error("Failed to load properties", e);
 			}
-			for (Entry<Object, Object> entry : System.getProperties().entrySet()) {
-				properties.put(entry.getKey().toString(), entry.getValue().toString());
-			}
+			properties.putAll(System.getProperties());
 		}
 		return properties;
 	}
+	
+	public static List<Entry<Object, Object>> getSorted() {
+		List<Entry<Object, Object>> res = new ArrayList<Entry<Object, Object>>();
+		
+		for (Entry<Object, Object> entry : get().entrySet()) {
+			res.add(entry);
+		}
+		Collections.sort(res, new Comparator<Entry<Object, Object>>() {
+
+			@Override
+			public int compare(Entry<Object, Object> o1, Entry<Object, Object> o2) {
+				return o1.getKey().toString().compareTo(o2.getKey().toString());
+			}
+		});
+		return res ;
+	}
+	
 }
